@@ -1,0 +1,14 @@
+@font-face {
+  font-family: Gelion;
+  src:
+    url(./assets/fonts/principal/Gelion-Regular.ttf),
+    url(./assets/fonts/principal/Gelion-RegularItalic.ttf),
+    url(./assets/fonts/principal/Gelion-Medium.ttf),
+    url(./assets/fonts/principal/Gelion-MediumItalic.ttf);
+}
+
+* {
+
+  font-family: Gelion;
+  font-weight: bold;
+}

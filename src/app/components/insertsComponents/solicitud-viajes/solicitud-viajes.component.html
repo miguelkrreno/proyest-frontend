@@ -1,0 +1,205 @@
+<div class="container">
+  <div class="d-flex justify-content-center p-5">
+    <h2>Solicitud de viajes</h2>
+  </div>
+
+  <form novalidate [formGroup]="solicitudViajes" (ngSubmit)="recogerDatosViajes()">
+    <div class="background-green rounded w-50 p-4 mb-5">
+
+      <!-- <div class="my-3">
+          <label class="form-label" for="guid">Guid</label>
+          <input type="text" class="form-control" formControlName="guid" name="guid">
+          <p class="text-danger small" *ngIf="checkControl('guid', 'required')">Guid es obligatorio
+          </p>
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="usersId">id</label>
+          <input type="text" class="form-control" formControlName="usersId" name="usersId">
+          <p class="text-danger small" *ngIf="checkControl('usersId', 'required')">id es obligatorio
+          </p>
+        </div> -->
+
+      <div class="my-3">
+        <label class="form-label" for="dateRequest">Fecha solicitud {{this.dateNow.toLocaleDateString()}}</label>
+        <!-- <input type="date" formControlName="date_request" name="date_request">  -->
+
+        <!-- <p class="text-danger small" *ngIf="checkControl('date_request', 'required')">Fecha solicitud es obligatorio
+          </p> -->
+      </div>
+
+      <div class="my-3">
+        <label class="form-label" for="name">Nombre</label>
+        <input type="text" class="form-control" formControlName="name" name="name" placeholder="introduce tu Nombre" readonly>
+        <p class="text-danger small" *ngIf="checkControl('name', 'required')">Nombre es obligatorio
+        </p>
+      </div>
+
+      <div class="my-3">
+        <label class="form-label" for="lastname">Apellidos</label>
+        <input type="text" class="form-control" formControlName="lastname" name="lastname" placeholder="introduce tu Apellido" readonly>
+        <p class="text-danger small" *ngIf="checkControl('lastname', 'required')">Apellidos es obligatorio
+        </p>
+      </div>
+
+      <div class="my-3">
+        <label class="form-label" for="area">Area</label>
+        <input type="text" id="area" class="form-control" formControlName="area" readonly>
+
+        <!-- <select id="area" formControlName="area" class="form-select">
+          <option value="" selected>Selecciona un área</option>
+          <option value="BACKEND">Backend</option>
+          <option value="BIG DATA & POWER BI">Proyectos</option>
+          <option value="BUSINESS CENTRAL">Business Central</option>
+          <option value="CLOUD & DEVOPS & SEGURIDAD">Cloud & DevOps & Seguridad</option>
+          <option value="CUSTOMER ENGAGEMENT">Customer engagement</option>
+          <option value="DISEÑO & UX">Diseño & UX</option>
+          <option value="FRONTEND">Frontend</option>
+          <option value="INFRAESTRUCTURA">Infraestructuras</option>
+          <option value="INTELIGENCIA ARTIFICIAL">Inteligencia artificial</option>
+          <option value="IoT">IoT</option>
+          <option value="MOVILIDAD">Movilidad</option>
+          <option value="MW TEAMS SHAREPOINT & SEGURIDAD">MW Teams sharepoint & seguridad</option>
+          <option value="POWER PLATFORM">Power platform</option>
+          <option value="QA">QA</option>
+          <option value="XR">XR</option>
+        </select> -->
+        <p class="text-danger small" *ngIf="checkControl('area', 'required')">Seleccione un área es obligatorio
+        </p>
+      </div>
+
+      <div class="my-3">
+        <label class="form-label" for="department">Departamento</label>
+        <select id="department" formControlName="department" class="form-select">
+          <option value="" selected>Selecciona un departamento</option>
+          <option value="VV">VV</option>
+          <option value="Mkt">Mkt</option>
+          <option value="Rrhh">Rrhh</option>
+          <option value="Sales">Sales</option>
+          <option value="Servicios Generales">Servicios Generales</option>
+          <option value="WW">WW</option>
+          <option value="XX">XX</option>
+          <option value="YY">YY</option>
+          <option value="Proyectos">Proyecto</option>
+
+        </select>
+        <p class="text-danger small" *ngIf="checkControl('department', 'required')">Seleccione un Departamento es obligatorio
+        </p>
+      </div>
+
+      <div class="my-3" *ngIf="solicitudViajes.get('department')?.value == 'Proyectos' ">
+        <label class="form-label" for="projectCode">Código de proyecto</label>
+        <input type="text" class="form-control" formControlName="projectCode" name="projectCode" placeholder="introduce Código de proyecto">
+
+      </div>
+
+      <div class="my-3">
+        <label class="form-label" for="travelPurpouse">Motivo viaje</label>
+        <input type="text" class="form-control" formControlName="travelPurpouse" name="travelPurpouse" placeholder="introduce Motivo viaje">
+        <p class="text-danger small" *ngIf="checkControl('travelPurpouse', 'required')">Motivo viaje es
+          obligatorio
+        </p>
+      </div>
+
+
+      <div class="my-3">
+        <label class="form-label" for="departureDate">Fecha salida</label>
+        <input type="date" class="form-control" formControlName="departureDate" name="departureDate" >
+
+        <p class="text-danger small" *ngIf="validDate === false">
+          La fecha de salida no puede ser anterior a hoy</p>
+
+
+        <p class="text-danger small" *ngIf="checkControl('departureDate', 'required')">Fecha salida
+          es obligatorio
+        </p>
+      </div>
+
+      <div class="my-3">
+        <label class="form-label" for="arrivalDate">Fecha llegada </label>
+        <input type="date" class="form-control" formControlName="arrivalDate" name="arrivalDate">
+        <p class="text-danger small" *ngIf="checkControl('arrivalDate', 'required')">Fecha llegada es obligatorio
+        </p>
+      </div>
+
+
+
+      <div class="my-3">
+        <label class="form-label" for="origin">Origen</label>
+        <input type="text" class="form-control" formControlName="origin" name="origin" placeholder="introduce el Origen del viaje">
+        <p class="text-danger small" *ngIf="checkControl('origin', 'required')">Origen es obligatorio
+        </p>
+      </div>
+      <div class="my-3">
+        <label class="form-label" for="destination">Destino</label>
+        <input type="text" class="form-control" formControlName="destination" name="destination" placeholder="introduce el Destino del viaje">
+        <p class="text-danger small" *ngIf="checkControl('destination', 'required')">Destino es obligatorio
+        </p>
+      </div>
+
+
+      <div class="my-3">
+        <label class="form-label" for="transportType">Transporte</label>
+        <select id="transportType" formControlName="transportType" class="form-select">
+          <option value="" selected>Selecciona un método de transporte</option>
+          <option value="tren" selected>Tren</option>
+          <option value="barco" selected>Barco</option>
+          <option value="avion" selected>Avión</option>
+          <option value="coche" selected>Coche (0,19€/Km)</option>
+
+        </select>
+        <p class="text-danger small" *ngIf="checkControl('transportType', 'required')">Transporte es obligatorio
+        </p>
+      </div>
+
+      <div class="my-3" *ngIf="solicitudViajes.get('transportType')?.value == 'coche' ">
+        <label class="form-label" for="kilometrers">Kilometros Aproximados</label>
+        <input type="number" min="1" class="form-control" formControlName="kilometrers" name="kilometrers" placeholder="introduce los Kilometros Aproximados">
+      </div>
+
+      <div>
+        <label class="form-label me-3" for="overnightStay">¿Pernocta?</label>
+        <input type="radio" id="si" name="overnightStay" value="si" formControlName="overnightStay">
+        <label class="form-label me-3" for="si">Si</label>
+        <input type="radio" id="no" name="overnightStay" value="no" formControlName="overnightStay">
+        <label class="form-label me-3" for="no">No</label>
+        <p class="text-danger small" *ngIf="checkControl('overnightStay', 'required')">Pernocta es obligatorio
+        </p>
+
+        <div class="my-3" *ngIf="solicitudViajes.get('overnightStay')?.value == 'si' ">
+          <label class="form-label" for="overnightStay">Nombre del hotel</label>
+          <input class="form-control" type="text" formControlName="hotelName" placeholder="introduce el Nombre del hotel">
+
+          <br>
+
+          <label class="form-label" for="overnightStay">Enlace del hotel</label>
+          <input class="form-control" type="text" formControlName="hotelUrl" placeholder="introduce el Enlace del hotel">
+        </div>
+
+        <!-- <div *ngIf="solicitudViajes.get('stop_over')?.value == 'si' " class=" col-12 mt-4">
+            <label class="me-3" for="stop_over"><strong>Enlace del hotel</strong></label>
+            <input type="text" formControlName="stop_over" name="stop_over">
+
+          </div> -->
+
+      </div>
+
+      <div class="my-3">
+        <label class="form-label" for="approximateAmount">Importe aprox.</label>
+        <input type="number" min="1" class="form-control" formControlName="approximateAmount" name="approximateAmount" placeholder="introduce el Importe aproximado">
+        <p class="text-danger small" *ngIf="checkControl('approximateAmount', 'required')">Importe aprox. es
+          obligatorio
+        </p>
+      </div>
+
+
+      <div class="row justify-content-center">
+        <!-- <button class="send col-12 mt-4">Enviar</button> -->
+        <input type="submit" class="btn btn-bravent text-white my-3 col-3">
+      </div>
+    </div>
+    {{solicitudViajes.value | json}}
+
+
+  </form>
+</div>

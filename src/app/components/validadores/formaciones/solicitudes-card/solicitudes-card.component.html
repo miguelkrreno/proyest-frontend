@@ -1,0 +1,34 @@
+<div class="card p-4">
+  <div class="d-flex justify-content-between">
+    <div class="columnas d-flex justify-content-between row">
+      <p class="info col  ">{{listaSolicitudes?.guid}}</p>
+      <p class="info col ">{{listaSolicitudes?.dateRequest}}</p>
+      <p class="info col ">{{listaSolicitudes?.applicantName}}</p>
+      <p class="info col  ">{{listaSolicitudes?.department}}</p>
+      <p class="info col  ">{{listaSolicitudes?.nameRequest}}</p>
+      <p class="info col  ">{{listaSolicitudes?.status}}</p>
+      <p class="comentario info col ">{{listaSolicitudes?.comment}}</p>
+
+    </div>
+    <div>
+      <button class="btn btn-secondary" *ngIf="listaSolicitudes?.nameRequest == 'Solicitud de Formacion'"
+        [routerLink]="['/homeValidadores/Formacion', listaSolicitudes?.guid]">Ver
+      </button>
+
+      <button class="btn btn-secondary" *ngIf="listaSolicitudes?.nameRequest == 'Solicitud de Gasto'"
+        [routerLink]="['/homeValidadores/Gasto', listaSolicitudes?.guid]">Ver
+      </button>
+
+      <button class="btn btn-secondary" *ngIf="listaSolicitudes?.nameRequest == 'Solicitud de Compra'"
+        [routerLink]="['/homeValidadores/Compra', listaSolicitudes?.guid]">Ver
+      </button>
+      <button class="btn btn-secondary" *ngIf="listaSolicitudes?.nameRequest == 'Solicitud de Viaje'"
+        [routerLink]="['/homeValidadores/Viaje', listaSolicitudes?.guid]">Ver
+      </button>
+
+
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

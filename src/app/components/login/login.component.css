@@ -1,0 +1,89 @@
+/* @font-face {
+  font-family: Gelion;
+  src:
+    url(../../../assets/fonts/principal/Gelion-Regular.ttf),
+    url(../../../assets/fonts/principal/Gelion-RegularItalic.ttf),
+    url(../../../assets/fonts/principal/Gelion-Medium.ttf),
+    url(../../../assets/fonts/principal/Gelion-MediumItalic.ttf);
+}
+
+* {
+
+  font-family: Gelion;
+  font-weight: bold;
+} */
+
+.body {
+  background-image: url("https://www.bravent.net/wp-content/uploads/2020/09/braventTeam.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 90vh;
+}
+
+/* .navbar {
+  background-color: rgb(2, 7, 38);
+  position: sticky;
+} */
+
+/* .color-diferente {
+  color: rgb(218, 221, 2);
+} */
+
+/* .formulario {
+  text-align: center;
+} */
+
+
+/* .bravent {
+  margin-left: 15px;
+  width: 110px;
+  height: 40px;
+} */
+
+/* input {
+  border-radius: 7px;
+} */
+
+/* .send {
+  border-radius: 15px;
+  color: white;
+  background-color: rgb(2, 7, 38);
+  border: 0px;
+  text-align: center;
+} */
+
+/* .mensaje-bienvenida {
+
+  font-size: 30px;
+  padding-top: 50px;
+  margin: 0px auto 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.login {
+  background-color: rgb(218, 221, 2);
+  border-radius: 7px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  width: 450px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-bravent {
+  background-color: #020726;
+}
+
+.text-green{
+  color: #dadd02;
+}
+
+.background-green{
+  background-color: #dadd02;
+  margin: 0 auto;
+}

@@ -1,0 +1,19 @@
+<div class="card p-4">
+  <div class="d-flex justify-content-between">
+    <div class="columnas d-flex justify-content-between row">
+      <p class="info col  ">{{viajes.guid}}</p>
+      <p class="info col ">{{viajes.date_request}}</p>
+      <p class="info col  ">Solicitud de viaje</p>
+      <p class="info col  ">estado</p>
+      <p class="comentario info col ">Comentario</p>
+
+    </div>
+    <div>
+      <button class="btn btn-secondary" [routerLink]="['/homeValidadores', viajes?.guid]">Ver
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

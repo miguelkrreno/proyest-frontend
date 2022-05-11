@@ -1,0 +1,18 @@
+<div class="card d-flex flex-row justify-content-between card-gray my-2" *ngIf="myRequest?.guid != null">
+    <div class="row text-center py-2 anchura">
+        <p class="col m-0">{{myRequest?.guid}}</p>
+        <p class="col m-0">{{myRequest?.dateRequest}}</p>
+        <p class="col m-0">{{myRequest?.department}}</p>
+        <p class="col m-0">{{myRequest?.nameRequest}}</p>
+        <p class="col m-0">{{myRequest?.status}}</p>
+        <p class="col m-0">{{myRequest?.comment}}</p>
+        
+    
+    </div>
+    <div class="my-3 d-flex flex-wrap justify-content-center">
+        <button class="btn btn-dark" [routerLink]="['/detailRequest']" *ngIf="myRequest?.status === 'denegado'">Nueva</button>
+        <button class="btn btn-dark" [routerLink]="['/detailRequest']" *ngIf="myRequest?.status === 'pendiente'">Actualizar</button>
+        <button class="btn btn-dark" [routerLink]="['/detailRequest']" *ngIf="myRequest?.status === 'pendiente' || myRequest?.status === 'denegado' || myRequest?.status === 'en proceso' || myRequest?.status === 'aprobado'">Ver</button>
+    </div>
+
+</div>

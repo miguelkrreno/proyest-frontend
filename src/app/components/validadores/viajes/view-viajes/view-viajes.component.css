@@ -1,0 +1,61 @@
+.button {
+  color: white;
+  background-color: rgb(2, 7, 38);
+}
+
+button {
+  color: white;
+  background-color: rgb(2, 7, 38);
+}
+
+.send {
+  border-radius: 10px;
+  width: 40px;
+}
+
+
+
+.volver {
+
+  margin: 10px;
+}
+
+input {
+  border-radius: 7px;
+}
+
+.body {
+  margin-bottom: 50px;
+}
+
+.campos {
+  width: 100%;
+}
+
+.solicitud {
+  background-color: rgb(241, 241, 234);
+  border-radius: 7px;
+  padding: 30px;
+  width: 40%;
+  margin: 0 auto;
+
+  margin-bottom: 10px;
+
+  margin-top: 50px;
+
+  display: block;
+
+}
+
+.comentario {
+  color: rgb(2, 7, 38);
+  background-color: rgb(218, 221, 2);
+  border-radius: 7px;
+  padding: 30px;
+  width: 40%;
+  margin: 0 auto;
+  font-size: 20px;
+  margin-top: 50px;
+
+
+}

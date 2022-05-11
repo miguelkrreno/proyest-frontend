@@ -1,0 +1,123 @@
+<div class="body">
+
+  <div class="solicitud card p-4" *ngIf="misFormacionesValidadores != undefined">
+    <div class="d-flex justify-content-between">
+      <div class="columnas d-flex justify-content-between row">
+        <p class="info ">Id solicitud: {{misFormacionesValidadores.guid}}</p>
+        <p class="info ">Tipo de solicitud: {{misFormacionesValidadores.nameRequest}}</p>
+        <p class="info ">Nivel de validación: {{misFormacionesValidadores.validationLevel}}</p>
+        <p class="info ">Id solicitante: {{misFormacionesValidadores.applicantId}}</p>
+        <p class="info ">Nombre solicitante: {{misFormacionesValidadores.applicantName}}</p>
+        <p class="info ">Area: {{misFormacionesValidadores.area}}</p>
+        <p class="info ">Fecha solicitud: {{misFormacionesValidadores.dateRequest}}</p>
+        <p class="info ">Departamento: {{misFormacionesValidadores.department}}</p>
+        <p class="info ">Código de proyecto: {{misFormacionesValidadores.projectCode}}</p>
+        <p class="info ">Motivo de formación: {{misFormacionesValidadores.trainingReason}}</p>
+        <p class="info ">Fecha inicio de formación: {{misFormacionesValidadores.startTrainingDate}}</p>
+        <p class="info ">Fecha fiinalización de formación: {{misFormacionesValidadores.endTrainingDate}}</p>
+        <p class="info ">Tipo de formación: {{misFormacionesValidadores.requestedTraining}}</p>
+        <p class="info ">Proveedor: {{misFormacionesValidadores.supplier}}</p>
+        <p class="info ">Cantidad de horas: {{misFormacionesValidadores.hours}}</p>
+        <p class="info ">Hora de inicio: {{misFormacionesValidadores.startTrainingTime}}</p>
+        <p class="info ">Hora de finalización: {{misFormacionesValidadores.endTrainingTime}}</p>
+        <p class="info ">Número de participantes: {{misFormacionesValidadores.participantsNumber}}</p>
+        <p class="info ">Coste aproximado: {{misFormacionesValidadores.approximateAmount}}</p>
+        <p class="info ">Validador 1: {{misFormacionesValidadores.nameValidator1}}</p>
+        <p class="info "
+          *ngIf="misFormacionesValidadores.validationLevel == '2' || misFormacionesValidadores.validationLevel == '3'">
+          Comentario validador 1:
+          {{misFormacionesValidadores.commentValidator1}}</p>
+        <p class="info ">Validador 2: {{misFormacionesValidadores.nameValidator2}}</p>
+        <p class="info " *ngIf=" misFormacionesValidadores.validationLevel == '3'">
+          Comentario validador 2:
+          {{misFormacionesValidadores.commentValidator2}}</p>
+        <p class="info ">Validador 3: {{misFormacionesValidadores.nameValidator3}}</p>
+        <p class="info " *ngIf=" misFormacionesValidadores.validationLevel == '3'">
+          Comentario validador 3:
+          {{misFormacionesValidadores.commentValidator3}}</p>
+
+
+        <!--
+          "onBudget": null,
+          "nameValidator1": "Ana",
+          "idValidator1": 25,
+          "statusValidation1": null,
+          "commentValidator1": null,
+          "nameValidator2": null,
+          "idValidator2": null,
+          "statusValidation2": null,
+          "commentValidator2": null,
+          "nameValidator3": null,
+          "idValidator3": null,
+          "statusValidation3": null,
+          "commentValidator3": null,
+          "error": null -->
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="comentario d-flex flex-column ">
+
+    <form action="" [formGroup]="formularioComentario" (ngSubmit)="enviarDatos()">
+
+
+      <div class="text-center "
+        *ngIf="misFormacionesValidadores != undefined && misFormacionesValidadores.validationLevel == '2'">
+        <label class="text center" for="comentario"><strong> ¿Está dentro de presupuesto?</strong></label>
+
+        <div class="d-flex justify-content-center">
+          <input formControlName="onBudget" class="" type="radio" id="si" name="onBudget" [value]="1">
+          <label class="me-3" for="si">Si</label>
+          <input formControlName="onBudget" type="radio" id="no" name="onBudget" [value]="0">
+          <label for="no">No</label>
+
+
+        </div>
+      </div>
+
+
+      <div class="formulario text-center col-12 mt-4 "
+        *ngIf="misFormacionesValidadores != undefined && misFormacionesValidadores.validationLevel == '1'">
+        <label class="mb-2" for="comentario"><strong>Comentario</strong></label>
+        <br>
+        <input formControlName="comentario" type="text" name="comentario" id="comentario1">
+      </div>
+
+      <div class="formulario text-center col-12 mt-4 "
+        *ngIf="misFormacionesValidadores != undefined && misFormacionesValidadores.validationLevel == '2'">
+        <label class="mb-2" for="comentario2"><strong>Comentario</strong></label>
+        <br>
+        <input formControlName="comentario2" type="text" name="comentario2" id="comentario1">
+      </div>
+      <div class="formulario text-center col-12 mt-4 "
+        *ngIf="misFormacionesValidadores != undefined && misFormacionesValidadores.validationLevel == '3'">
+        <label class="mb-2" for="comentario3"><strong>Comentario</strong></label>
+        <br>
+        <input formControlName="comentario3" type="text" name="comentario3" id="comentario1">
+      </div>
+
+      <div class="botones_validacion text-center col-12 mt-4 ">
+        <label class="" for="comentario"><strong>¿Desea validar?</strong></label>
+
+        <div class="d-flex justify-content-center">
+          <input formControlName="validar" class="" type="radio" id="si" name="validar" [value]="1">
+          <label class="me-3" for="si">Si</label>
+          <input formControlName="validar" type="radio" id="no" name="validar" [value]="0">
+          <label for="no">No</label>
+
+
+        </div>
+        <input class="button" type="submit" class="send button mt-4 me-3" value="Enviar">
+      </div>
+    </form>
+  </div>
+
+  <div class="volver text-center mt-5">
+    <button class="btn btn-secondary" (click)="borrarGuId()" [routerLink]="['/homeValidadores']">Volver
+    </button>
+
+  </div>
+</div>

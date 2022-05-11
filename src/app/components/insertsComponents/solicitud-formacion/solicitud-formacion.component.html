@@ -1,0 +1,186 @@
+<div class="container">
+  <div class="d-flex justify-content-center p-5">
+    <h2>Solicitud de formación</h2>
+  </div>
+
+  <form novalidate [formGroup]="solicitudFormacion" (ngSubmit)="recogerDatos()">
+    <div class="background-green rounded w-50 p-4 mb-5">
+
+
+      <!-- <div class="my-3">
+          <label class="form-label" for="guid">Guid</label>
+          <input type="text" class="form-control" formControlName="guid" name="guid">
+          <p class="text-danger small" *ngIf="checkControl('guid', 'required')">Guid es obligatorio
+          </p>
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="usersId">id</label>
+          <input type="text" class="form-control" formControlName="usersId" name="usersId">
+          <p class="text-danger small" *ngIf="checkControl('usersId', 'required')">id es obligatorio
+          </p>
+        </div> -->
+
+
+      <div class="my-3 ">
+        <label class="form-label" for="dateRequest">Fecha solicitud {{this.dateNow.toLocaleDateString()}}</label>
+        <!-- <input type="date" formControlName="date_request" name="date_request">  -->
+
+        <!-- <p class="text-danger small" *ngIf="checkControl('date_request', 'required')">Fecha solicitud es obligatorio
+                  </p> -->
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="name">Nombre</label>
+          <input type="text" class="form-control" formControlName="name" name="name" placeholder="introduce tu Nombre" readonly>
+          <p class="text-danger small" *ngIf="checkControl('name', 'required')">Nombre es obligatorio
+          </p>
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="lastname">Apellidos</label>
+          <input type="text" class="form-control" formControlName="lastname" name="lastname" placeholder="introduce tu Apellido" readonly>
+          <p class="text-danger small" *ngIf="checkControl('lastname', 'required')">Apellidos es obligatorio
+          </p>
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="area">Area</label>
+          <input type="text" id="area" class="form-control" formControlName="area" readonly>
+
+          <!-- <select id="area" formControlName="area" class="form-select">
+            <option value="" selected>Selecciona un área</option>
+            <option value="BACKEND">Backend</option>
+            <option value="BIG DATA & POWER BI">Proyectos</option>
+            <option value="BUSINESS CENTRAL">Business Central</option>
+            <option value="CLOUD & DEVOPS & SEGURIDAD">Cloud & DevOps & Seguridad</option>
+            <option value="CUSTOMER ENGAGEMENT">Customer engagement</option>
+            <option value="DISEÑO & UX">Diseño & UX</option>
+            <option value="FRONTEND">Frontend</option>
+            <option value="INFRAESTRUCTURA">Infraestructuras</option>
+            <option value="INTELIGENCIA ARTIFICIAL">Inteligencia artificial</option>
+            <option value="IoT">IoT</option>
+            <option value="MOVILIDAD">Movilidad</option>
+            <option value="MW TEAMS SHAREPOINT & SEGURIDAD">MW Teams sharepoint & seguridad</option>
+            <option value="POWER PLATFORM">Power platform</option>
+            <option value="QA">QA</option>
+            <option value="XR">XR</option>
+          </select> -->
+          <p class="text-danger small" *ngIf="checkControl('area', 'required')">Seleccione un área es obligatorio
+          </p>
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="department">Departamento</label>
+          <select id="department" formControlName="department" class="form-select">
+            <option value="" selected>Selecciona un departamento</option>
+            <option value="VV">VV</option>
+            <option value="Mkt">Mkt</option>
+            <option value="Rrhh">Rrhh</option>
+            <option value="Sales">Sales</option>
+            <option value="Servicios Generales">Servicios Generales</option>
+            <option value="WW">WW</option>
+            <option value="XX">XX</option>
+            <option value="YY">YY</option>
+            <option value="Proyectos">Proyecto</option>
+
+          </select>
+          <p class="text-danger small" *ngIf="checkControl('department', 'required')">Seleccione un Departamento es obligatorio
+          </p>
+        </div>
+
+        <div class="my-3" *ngIf="solicitudFormacion.get('department')?.value == 'Proyectos' ">
+          <label class="form-label" for="projectCode">Código de proyecto</label>
+          <input type="text" class="form-control" formControlName="projectCode" name="projectCode">
+
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="trainingReason">Motivo formación</label>
+          <input type="text" class="form-control" formControlName="trainingReason" name="trainingReason" placeholder="introduce Motivo de formación">
+          <p class="text-danger small" *ngIf="checkControl('trainingReason', 'required')">Motivo formación es
+            obligatorio
+          </p>
+        </div>
+
+          <div class="my-3">
+            <label class="form-label" for="startTrainingDate">Fecha inicio formación</label>
+            <input type="date" class="form-control" formControlName="startTrainingDate" name="startTrainingDate">
+
+            <p class="text-danger small" *ngIf="validDate === false">
+              La fecha de inicio no puede ser anterior a hoy</p>
+
+
+            <p class="text-danger small" *ngIf="checkControl('startTrainingDate', 'required')">Fecha inicio formación
+              es obligatorio
+            </p>
+          </div>
+
+          <div class="my-3">
+            <label class="form-label" for="endTrainingDate">Fecha finalización formación</label>
+            <input type="date" class="form-control" formControlName="endTrainingDate" name="endTrainingDate">
+
+          </div>
+
+        <div class="my-3">
+          <label class="form-label" for="requestedTraining">Formación solicitada</label>
+          <input type="text" class="form-control" formControlName="requestedTraining" name="requestedTraining" placeholder="introduce la Formación solicitada">
+          <p class="text-danger small" *ngIf="checkControl('requestedTraining', 'required')">Formación solicitada
+            es obligatorio
+          </p>
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="supplier">Proveedor</label>
+          <input type="text" class="form-control" formControlName="supplier" name="supplier" placeholder="introduce el Proveedor">
+          <p class="text-danger small" *ngIf="checkControl('supplier', 'required')">El Proveedor es obligatorio
+          </p>
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="hours">Horas</label>
+          <input type="number" class="form-control" min="0" formControlName="hours" name="hours" placeholder="introduce el Total de horas">
+
+        </div>
+
+          <div class="my-3">
+            <label class="form-label" for="startTrainingTime">Hora inicio</label>
+            <input type="text" class="form-control" formControlName="startTrainingTime" name="startTrainingTime" placeholder="introduce hora de inicio">
+            <p class="text-danger small" *ngIf="checkControl('startTrainingTime', 'pattern')">Por favor introduce una hora dentro del rango de 00:00 a 23:59</p>
+
+
+          </div>
+          <div class="my-3">
+            <label class="form-label" for="endTrainingTime">Hora finalización</label>
+            <input type="text" class="form-control" formControlName="endTrainingTime" name="endTrainingTime" placeholder="introduce hora de finalización">
+            <p class="text-danger small" *ngIf="checkControl('endTrainingTime', 'pattern')">Por favor introduce una hora dentro del rango de 00:00 a 23:59</p>
+
+
+          </div>
+
+        <div class="my-3">
+          <label class="form-label" for="participantsNumber">Cantidad de personas</label>
+          <input type="number" class="form-control" min="1" formControlName="participantsNumber" name="participantsNumber" placeholder="introduce la Cantidad de personas">
+          <p class="text-danger small" *ngIf="checkControl('participantsNumber', 'required')">Cantidad de personas es
+            obligatorio
+          </p>
+        </div>
+
+        <div class="my-3">
+          <label class="form-label" for="approximateAmount">Importe aprox.</label>
+          <input type="number" class="form-control" min="1" formControlName="approximateAmount" name="approximateAmount" placeholder="introduce el Importe aproximado">
+          <p class="text-danger small" *ngIf="checkControl('approximateAmount', 'required')">Importe aprox. es
+            obligatorio
+          </p>
+        </div>
+        <div class="row justify-content-center">
+          <!-- <button type="submit" class="send col-12 mt-4">Enviar</button> -->
+          <input type="submit" class="btn btn-bravent text-white my-3 col-3">
+        </div>
+
+    </div>
+    {{solicitudFormacion.value | json}}
+
+
+  </form>
+</div>

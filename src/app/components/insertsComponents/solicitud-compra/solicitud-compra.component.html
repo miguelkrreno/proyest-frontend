@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="d-flex justify-content-center p-5">
+        <h2>Solicitud de Compra</h2>
+    </div>
+    <form novalidate [formGroup]="formSolicitudCompra" (ngSubmit)="getDataForm()">
+
+        <div class="background-green rounded w-50 p-4 mb-5">
+            <div class="my-3">
+                <label for="dateRequest" class="form-label">Fecha solicitud: {{this.dateNow.toLocaleDateString()}}</label>               
+
+            </div>
+            <div class="my-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" id="name" class="form-control" placeholder="introduce tu Nombre" formControlName="name" readonly>
+            
+                <p class="text-danger small" *ngIf="checkControl('name', 'required')">El campo es obligatorio</p>
+                <!-- <p *ngIf="checkControl('name', 'minlength')" class="text-danger">El campo nombre tiene que tener longitud minimo de 3 caracteres</p> -->
+            </div>
+            <!-- apellido; campo requerido y de longitud maxima de 15 caracteres -->
+            <div class="my-3">
+                <label for="lastname" class="form-label">Apellidos</label>
+                <input type="text" id="lastname" class="form-control" placeholder="introduce tu Apellido" formControlName="lastname" readonly>
+                <p class="text-danger small" *ngIf="checkControl('lastname', 'required')">El campo es obligatorio</p>
+                <!-- <p *ngIf="checkControl('surname', 'maxlength')" class="text-danger">El campo apellido tiene que tener una longitud de un maximo de 15 caracteres</p> -->
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="area">Area</label>
+                <input type="text" id="area" class="form-control" formControlName="area" readonly>
+
+                <!-- <select id="area" formControlName="area" class="form-select">
+                  <option value="" selected>Selecciona un área</option>
+                  <option value="BACKEND">Backend</option>
+                  <option value="BIG DATA & POWER BI">Proyectos</option>
+                  <option value="BUSINESS CENTRAL">Business Central</option>
+                  <option value="CLOUD & DEVOPS & SEGURIDAD">Cloud & DevOps & Seguridad</option>
+                  <option value="CUSTOMER ENGAGEMENT">Customer engagement</option>
+                  <option value="DISEÑO & UX">Diseño & UX</option>
+                  <option value="FRONTEND">Frontend</option>
+                  <option value="INFRAESTRUCTURA">Infraestructuras</option>
+                  <option value="INTELIGENCIA ARTIFICIAL">Inteligencia artificial</option>
+                  <option value="IoT">IoT</option>
+                  <option value="MOVILIDAD">Movilidad</option>
+                  <option value="MW TEAMS SHAREPOINT & SEGURIDAD">MW Teams sharepoint & seguridad</option>
+                  <option value="POWER PLATFORM">Power platform</option>
+                  <option value="QA">QA</option>
+                  <option value="XR">XR</option>
+                </select> -->
+                <p class="text-danger small" *ngIf="checkControl('area', 'required')">Seleccione un área es obligatorio
+                </p>
+            </div>
+            <div class="my-3">
+                <label class="form-label" for="department">Departamento</label>
+                <select id="department" formControlName="department" class="form-select">
+                  <option value="">Selecciona un departamento</option>
+                  <option value="VV" selected>VV</option>
+                  <option value="Mkt">Mkt</option>
+                  <option value="Rrhh">Rrhh</option>
+                  <option value="Sales">Sales</option>
+                  <option value="Servicios Generales">Servicios Generales</option>
+                  <option value="WW">WW</option>
+                  <option value="XX">XX</option>
+                  <option value="YY">YY</option>
+                  <option value="Proyectos">Proyecto</option>
+      
+                </select>
+                <p class="text-danger small" *ngIf="checkControl('department', 'required')">Seleccione un Departamento es obligatorio
+                </p>
+            </div>
+            <div class="my-3" *ngIf="formSolicitudCompra.get('department')?.value == 'Proyectos'">
+                <label for="projectCode" class="form-label">Código de proyecto</label>
+                <input type="text" id="projectCode" class="form-control" placeholder="introduce Código de proyecto" formControlName="projectCode">
+            </div>
+            <div class="my-3">
+                <label for="purchaseReason" class="form-label">Motivo de Compra</label>
+                <input type="text" id="purchaseReason" class="form-control" placeholder="introduce Motivo de Compra" formControlName="purchaseReason">
+                <p class="text-danger small" *ngIf="checkControl('purchaseReason', 'required')">El Motivo de Compra es obligatorio
+                </p>
+            </div>
+            <div class="my-3">
+                <label for="purchaseDate" class="form-label">Fecha de Compra</label>
+                <input type="date" id="purchaseDate" class="form-control" formControlName="purchaseDate">
+                <p class="text-danger small" *ngIf="checkControl('purchaseDate', 'required')">Ingrese la Fecha de Compra es obligatorio
+                </p>
+            </div>
+            <div class="my-3">
+                <label for="product" class="form-label">Producto</label>
+                <input type="text" id="product" class="form-control" placeholder="introduce el enlace del Producto" formControlName="product">
+            
+                <p class="text-danger small" *ngIf="checkControl('product', 'required')">Ingrese el enlace Producto es obligatorio</p>
+
+            </div>
+            <!-- apellido; campo requerido y de longitud maxima de 15 caracteres -->
+            <div class="my-3">
+                <label for="supplier" class="form-label">Proveedor</label>
+                <input type="text" id="supplier" class="form-control" placeholder="introduce el enlace del Proveedor" formControlName="supplier">
+                <p class="text-danger small" *ngIf="checkControl('supplier', 'required')">Ingrese el enlace del Proveedor es obligatorio</p>
+
+            </div>
+            <div class="my-3">
+                <label for="quantity" class="form-label">Cantidad</label>
+                <input type="number" min="1" class="form-control" placeholder="introduce Cantidad" formControlName="quantity">
+                <p class="text-danger small" *ngIf="checkControl('quantity', 'required')">La Cantidad es obligatorio
+                </p>
+              </div>
+            <div class="my-3">
+                <label for="appoximateAmount" class="form-label">Importe Aproximado</label>
+                <input type="number" id="appoximateAmount" min="1" class="form-control" placeholder="introduce el Importe Aproximado" formControlName="appoximateAmount">
+                <p class="text-danger small" *ngIf="checkControl('appoximateAmount', 'required')">El Importe Aproximado es obligatorio
+                </p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <input type="submit" value="Enviar" class="btn btn-bravent text-white my-3 col-3">
+            </div>
+        </div>
+{{formSolicitudCompra.value | json}}
+
+    </form>
+</div>

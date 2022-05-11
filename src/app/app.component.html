@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <img class="bravent" src="../../../assets/images/bravent.png">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLinkActive="active" aria-current="page" [routerLink]="['/home']"
+            *ngIf="login">Home</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLinkActive="active" aria-current="page" [routerLink]="['/homeValidadores']"
+            *ngIf="!login">Home</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/gastos']" *ngIf="login">Gastos</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/compras']" *ngIf="login">Compras</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/formacion']" *ngIf="login">Formación</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/viajes']" *ngIf="login">Viajes</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/perfil']" *ngIf="login || !login">Perfil</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" routerLinkActive="active" *ngIf="login || !login" (click)="existSession()">Cerrar Sesión</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+<div>
+  <router-outlet></router-outlet>
+
+</div>
+
+<div class="">
+  <div class="footer2"></div>
+  <footer class="text-center">
+    <small>® 2022 Bravent, Todos los derechos reservados.</small>
+  </footer>
+</div>

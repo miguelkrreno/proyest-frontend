@@ -1,0 +1,86 @@
+<div class="body">
+  <div class="titulo">
+    <h2>MI PERFIL</h2>
+  </div>
+
+
+
+  <div class="formulario">
+    <div class="campos flex-column " *ngIf="isValidator == false">
+
+      <div class="campo_perfil col-12 mt-4">
+        <label class="me-3" for="name"><strong>Id Usuario: {{users.userId}}</strong></label>
+
+      </div>
+
+      <div class="campo_perfil col-12 mt-4">
+        <label class="me-3" for="name"><strong>Nombre: {{users.name}}</strong></label>
+
+      </div>
+
+      <div class="campo_perfil col-12 mt-4">
+        <label class="me-3" for="lastname"><strong>Apellidos: {{users.lastname}}</strong></label>
+
+      </div>
+
+      <div class="campo_perfil col-12 mt-4">
+        <label class="me-3" for="area"><strong>Area: {{users.area}}</strong></label>
+      </div>
+
+
+      <div class="campo_perfil col-12 mt-4 ">
+        <label class="me-3" for="date_request"><strong>Email: {{users.email}}</strong></label>
+
+      </div>
+
+    </div>
+
+    <div class="campos flex-column " *ngIf="isValidator == true">
+
+      <div class="campo_perfil col-12 mt-4">
+        <label class="me-3" for="name"><strong>Id Usuario: {{validatores.userId}}</strong></label>
+
+      </div>
+
+      <div class="campo_perfil col-12 mt-4">
+        <label class="me-3" for="name"><strong>Nombre: {{validatores.name}}</strong></label>
+
+      </div>
+
+      <div class="campo_perfil col-12 mt-4">
+        <label class="me-3" for="lastname"><strong>Apellidos: {{validatores.lastname}}</strong></label>
+
+      </div>
+
+      <div class="campo_perfil col-12 mt-4 ">
+        <label class="me-3" for="date_request"><strong>Email: {{validatores.email}}</strong></label>
+
+      </div>
+
+      <div class="campo_perfil col-12 mt-4 ">
+        <label class="me-3" for="date_request"><strong>Id Validador: {{validatores.validatorId}}</strong></label>
+
+      </div>
+
+
+      <div class="campo_perfil col-12 mt-4">
+        <label class="me-3" for="area"><strong>Departamento a validar: {{validatores.department}}</strong></label>
+
+      </div>
+
+
+
+      <div class="campo_perfil col-12 mt-4 ">
+        <label class="me-3" for="nivelValidador"><strong>Nivel de validador: {{validatores.validatorLevel}}
+          </strong></label>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+</div>

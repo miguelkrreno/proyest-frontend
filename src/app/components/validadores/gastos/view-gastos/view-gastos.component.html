@@ -1,0 +1,117 @@
+<div class="body">
+  <div class="solicitud card p-4">
+    <div class="d-flex justify-content-between">
+      <div class="columnas d-flex justify-content-between row">
+        <p class="info ">Id Solicitud: {{misGastosValidadores.guid}}</p>
+        <p class="info ">Tipo de solicitud: {{misGastosValidadores.nameRequest}}</p>
+        <p class="info ">Nivel de validación: {{misGastosValidadores.validationLevel}}</p>
+        <p class="info ">Id solicitante: {{misGastosValidadores.applicantId}}</p>
+        <p class="info ">Nombre solicitante: {{misGastosValidadores.applicantName}}</p>
+        <p class="info ">Area: {{misGastosValidadores.area}}</p>
+        <p class="info ">Departamento: {{misGastosValidadores.department}}</p>
+        <p class="info ">Código de proyecto: {{misGastosValidadores.projectCode}}</p>
+        <p class="info ">Fecha: {{misGastosValidadores.dateRequest}}</p>
+        <p class="info ">Motivo gasto: {{misGastosValidadores.expenseReason}}</p>
+        <p class="info ">Fecha de gasto: {{misGastosValidadores.expenseDate}}</p>
+        <p class="info ">Tipo de gasto: {{misGastosValidadores.expenseType}}</p>
+        <p class="info ">importe gasto: {{misGastosValidadores.expenseAmount}}</p>
+        <p class="info ">Recibo {{misGastosValidadores.expenseReceipt}}</p>
+        <p class="info ">Validador 1: {{misGastosValidadores.nameValidator1}}</p>
+        <p class="info "
+          *ngIf="misGastosValidadores.validationLevel == '2' || misGastosValidadores.validationLevel == '3'">
+          Comentario validador 1:
+          {{misGastosValidadores.commentValidator1}}</p>
+        <p class="info ">Validador 2: {{misGastosValidadores.nameValidator2}}</p>
+        <p class="info " *ngIf=" misGastosValidadores.validationLevel == '3'">
+          Comentario validador 2:
+          {{misGastosValidadores.commentValidator2}}</p>
+        <p class="info ">Validador 3: {{misGastosValidadores.nameValidator3}}</p>
+        <p class="info " *ngIf=" misGastosValidadores.validationLevel == '3'">
+          Comentario validador 3:
+          {{misGastosValidadores.commentValidator3}}</p>
+
+
+        <!-- "status": "string",
+        "guid": "string",
+        "userId": 0,
+        "dateRequest": "2022-05-06T11:13:32.054Z",
+        "name": "string",
+        "lastname": "string",
+        "area": "string",
+        "departament": "string",
+        "projectCode": "string",
+        "expenseReason": "string",
+        "expenseDate": "2022-05-06T11:13:32.054Z",
+        "expenseType": "string",
+        "expenseAmount": 0,
+        "expenseReceipt": "string",
+        "comment": "string" -->
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="comentario d-flex flex-column ">
+
+    <form action="" [formGroup]="formularioComentario" (ngSubmit)="enviarDatos()">
+
+
+      <div class="text-center "
+        *ngIf="misGastosValidadores != undefined && misGastosValidadores.validationLevel == '2'">
+        <label class="text center" for="comentario"><strong> ¿Está dentro de presupuesto?</strong></label>
+
+        <div class="d-flex justify-content-center">
+          <input formControlName="onBudget" class="" type="radio" id="si" name="onBudget" [value]="1">
+          <label class="me-3" for="si">Si</label>
+          <input formControlName="onBudget" type="radio" id="no" name="onBudget" [value]="0">
+          <label for="no">No</label>
+
+
+        </div>
+      </div>
+
+
+      <div class="formulario text-center col-12 mt-4 "
+        *ngIf="misGastosValidadores != undefined && misGastosValidadores.validationLevel == '1'">
+        <label class="mb-2" for="comentario"><strong>Comentario</strong></label>
+        <br>
+        <input formControlName="comentario" type="text" name="comentario" id="comentario1">
+      </div>
+
+      <div class="formulario text-center col-12 mt-4 "
+        *ngIf="misGastosValidadores != undefined && misGastosValidadores.validationLevel == '2'">
+        <label class="mb-2" for="comentario2"><strong>Comentario</strong></label>
+        <br>
+        <input formControlName="comentario2" type="text" name="comentario2" id="comentario1">
+      </div>
+      <div class="formulario text-center col-12 mt-4 "
+        *ngIf="misGastosValidadores != undefined && misGastosValidadores.validationLevel == '3'">
+        <label class="mb-2" for="comentario3"><strong>Comentario</strong></label>
+        <br>
+        <input formControlName="comentario3" type="text" name="comentario3" id="comentario1">
+      </div>
+
+      <div class="botones_validacion text-center col-12 mt-4 ">
+        <label class="" for="comentario"><strong>¿Desea validar?</strong></label>
+
+        <div class="d-flex justify-content-center">
+          <input formControlName="validar" class="" type="radio" id="si" name="validar" [value]="1">
+          <label class="me-3" for="si">Si</label>
+          <input formControlName="validar" type="radio" id="no" name="validar" [value]="0">
+          <label for="no">No</label>
+
+
+        </div>
+        <input class="button" type="submit" class="send button mt-4 me-3" value="Enviar">
+      </div>
+    </form>
+  </div>
+
+  <div class="volver text-center mt-5">
+    <button class="btn btn-secondary" (click)="borrarGuId()" [routerLink]="['/homeValidadores']">Volver
+    </button>
+
+  </div>
+</div>

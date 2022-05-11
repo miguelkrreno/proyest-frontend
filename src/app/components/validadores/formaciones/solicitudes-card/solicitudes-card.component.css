@@ -1,0 +1,23 @@
+.card {
+  background-color: rgb(246, 244, 244);
+  margin-bottom: 10px;
+}
+
+.info {
+
+  text-align: center;
+}
+
+.columnas {
+  width: 90%;
+}
+
+.comentario {
+  overflow: hidden;
+  max-height: 20px;
+}
+
+button {
+  color: white;
+  background-color: rgb(2, 7, 38);
+}

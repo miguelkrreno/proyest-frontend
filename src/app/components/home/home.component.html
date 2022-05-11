@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="d-flex justify-content-center p-5">
+        <h2 class="text-bravent-green">MIS FORMULARIOS</h2>
+    </div>
+    <div class="d-flex flex-row justify-content-between sticky-top bg-white">
+        <div class="row text-center anchura">
+            <p class="col">Ref.</p>
+            <p class="col">Fecha</p>
+            <p class="col">Departamento</p>
+            <p class="col">Tipo de solicitud</p>
+            <p class="col">Estatus</p>
+            <p class="col">Comentario</p>
+        </div>
+        <div>
+            <p>Acciones</p>
+        </div>
+    </div>
+    <hr>
+
+    <div class="mb-2" *ngFor="let requestUser of arrayRequests">
+        <app-card-user-request [myRequest]="requestUser"></app-card-user-request>
+
+    </div>
+
+</div>

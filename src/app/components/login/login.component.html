@@ -1,0 +1,38 @@
+<!-- <nav class="navbar navbar-expand-lg  ">
+  <img class="bravent" src="../../../assets/images/bravent.png">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+</nav> -->
+
+<div class="body">
+
+
+  <div class="d-flex justify-content-center p-5">
+    <h2><span class="text-green">Bienvenid@</span> a la app de solicitud de gastos</h2>
+  </div>
+
+  <form novalidate [formGroup]="login" (ngSubmit)="recogerDatosLogin()">
+    <div class="background-green rounded w-50 p-4 mb-5">
+
+        <div class="text-center my-3">
+          <label for="email" class="form-label"><strong>Email</strong></label>
+          <br>
+          <input class="form-control text-center" formControlName="email" type="text" name="Email">
+          <p class="text-danger small" *ngIf="checkControl('email', 'required')">El campo es obligatorio</p>
+          <p class="text-danger small" *ngIf="checkControl('email', 'pattern')">Por favor introduce un email valido</p>
+
+        </div>
+
+        <div class="text-center my-3">
+          <label for="password" class="form-label"><strong>Password</strong></label>
+          <br>
+          <input class="form-control text-center" formControlName="password" type="password" name="password">
+          <p class="text-danger small" *ngIf="checkControl('password', 'required')">El campo es obligatorio</p>
+
+        </div>
+
+        <div class="row justify-content-center">
+          <input type="submit" class="btn btn-bravent text-white my-3 col-3" value="Enviar">
+        </div>
+    </div>
+  </form>
+</div>

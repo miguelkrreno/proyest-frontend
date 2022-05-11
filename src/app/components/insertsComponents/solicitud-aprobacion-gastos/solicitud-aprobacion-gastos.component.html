@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="d-flex justify-content-center p-5">
+        <h2>Solicitud de Aprobación de Gastos</h2>
+    </div>
+    <form novalidate [formGroup]="formSolicitudGastos" (ngSubmit)="getDataForm()">
+
+        <div class="background-green rounded w-50 p-4 mb-5">
+            <div class="my-3">
+                <label for="dateRequest" class="form-label">Fecha solicitud: {{this.dateNow.toLocaleDateString()}}</label>
+
+                
+
+            </div>
+            <div class="my-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" id="name" class="form-control" placeholder="introduce tu Nombre" formControlName="name" readonly>
+            
+                <p class="text-danger small" *ngIf="checkControl('name', 'required')">El campo es obligatorio</p>
+                <!-- <p *ngIf="checkControl('name', 'minlength')" class="text-danger">El campo nombre tiene que tener longitud minimo de 3 caracteres</p> -->
+            </div>
+            <!-- apellido; campo requerido y de longitud maxima de 15 caracteres -->
+            <div class="my-3">
+                <label for="lastname" class="form-label">Apellidos</label>
+                <input type="text" id="lastname" class="form-control" placeholder="introduce tu Apellido" formControlName="lastname" readonly>
+                <p class="text-danger small" *ngIf="checkControl('lastname', 'required')">El campo es obligatorio</p>
+                <!-- <p *ngIf="checkControl('surname', 'maxlength')" class="text-danger">El campo apellido tiene que tener una longitud de un maximo de 15 caracteres</p> -->
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="area">Area</label>
+                <input type="text" id="area" class="form-control" formControlName="area" readonly>
+
+                <!-- <select id="area" formControlName="area" class="form-select">
+                  <option value="" selected>Selecciona un área</option>
+                  <option value="BACKEND">Backend</option>
+                  <option value="BIG DATA & POWER BI">Proyectos</option>
+                  <option value="BUSINESS CENTRAL">Business Central</option>
+                  <option value="CLOUD & DEVOPS & SEGURIDAD">Cloud & DevOps & Seguridad</option>
+                  <option value="CUSTOMER ENGAGEMENT">Customer engagement</option>
+                  <option value="DISEÑO & UX">Diseño & UX</option>
+                  <option value="FRONTEND">Frontend</option>
+                  <option value="INFRAESTRUCTURA">Infraestructuras</option>
+                  <option value="INTELIGENCIA ARTIFICIAL">Inteligencia artificial</option>
+                  <option value="IoT">IoT</option>
+                  <option value="MOVILIDAD">Movilidad</option>
+                  <option value="MW TEAMS SHAREPOINT & SEGURIDAD">MW Teams sharepoint & seguridad</option>
+                  <option value="POWER PLATFORM">Power platform</option>
+                  <option value="QA">QA</option>
+                  <option value="XR">XR</option>
+
+                </select> -->
+                <p class="text-danger small" *ngIf="checkControl('area', 'required')">Seleccione un área es obligatorio
+                </p>
+            </div>
+            <div class="my-3">
+                <label class="form-label" for="department">Departamento</label>
+                <select id="department" formControlName="department" class="form-select">
+                  <option value="">Selecciona un departamento</option>
+                  <option value="VV" selected>VV</option>
+                  <option value="Mkt">Mkt</option>
+                  <option value="Rrhh">Rrhh</option>
+                  <option value="Sales">Sales</option>
+                  <option value="Servicios Generales">Servicios Generales</option>
+                  <option value="WW">WW</option>
+                  <option value="XX">XX</option>
+                  <option value="YY">YY</option>
+                  <option value="Proyectos">Proyecto</option>
+
+                </select>
+                <p class="text-danger small" *ngIf="checkControl('department', 'required')">Seleccione un Departamento es obligatorio
+                </p>
+            </div>
+            <div class="my-3" *ngIf="formSolicitudGastos.get('department')?.value == 'Proyectos'">
+                <label for="projectCode" class="form-label">Código de proyecto</label>
+                <input type="text" id="projectCode" class="form-control" placeholder="introduce Código de proyecto" formControlName="projectCode">
+            </div>
+            <div class="my-3">
+                <label for="expenseReason" class="form-label">Motivo Gasto</label>
+                <input type="text" id="expenseReason" class="form-control" placeholder="introduce Motivo Gasto" formControlName="expenseReason">
+                <p class="text-danger small" *ngIf="checkControl('expenseReason', 'required')">El Motivo Gasto es obligatorio
+                </p>
+            </div>
+            <div class="my-3">
+                <label for="expenseDate" class="form-label">Fecha realización Gasto</label>
+                <input type="date" id="expenseDate" class="form-control" formControlName="expenseDate">
+                <p class="text-danger small" *ngIf="checkControl('expenseDate', 'required')">Ingrese la Fecha de realización del Gasto es obligatorio
+                </p>
+            </div>
+            <div class="my-3">
+                <label class="form-label" for="expenseType"><strong>Tipo de Gasto</strong></label>
+                <select id="expenseType" formControlName="expenseType" class="form-select">
+                  <option value="" selected>Selecciona un Tipo de Gasto</option>
+                  <option value="Gasto sin justificante">Gasto sin justificante</option>
+                  <option value="Gastos con justificante">Gastos con justificante</option>
+                  <option value="Dieta">Dieta</option>
+                  <option value="Kilometraje">Kilometraje</option>
+                  <option value="gastos a nombre de empresa">Gastos a nombre de empresa</option>
+
+                </select>
+                <p class="text-danger small" *ngIf="checkControl('expenseType', 'required')">Seleccione un Tipo de Gasto es obligatorio
+                </p>
+            </div>
+            <div class="my-3">
+                <label for="expenseAmount" class="form-label">Importe Gasto</label>
+                <input type="number" id="expenseAmount" min="1" class="form-control" placeholder="introduce el Importe Gasto" formControlName="expenseAmount">
+                <p class="text-danger small" *ngIf="checkControl('expenseAmount', 'required')">El Importe de Gasto es obligatorio
+                </p>
+            </div>
+            <div class="my-3">
+                <label for="expenseReceipt" class="form-label">Adjunto justificante gasto</label>
+                <input type="text" id="expenseReceipt" class="form-control" placeholder="introduce el enlace del archivo adjunto" formControlName="expenseReceipt">
+                <p class="text-danger small" *ngIf="checkControl('expenseReceipt', 'required')">Ingrese el enlace es obligatorio
+                </p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <input type="submit" value="Enviar" class="btn btn-bravent text-white my-3 col-3">
+            </div>
+        </div>
+{{formSolicitudGastos.value | json}}
+
+    </form>
+</div>

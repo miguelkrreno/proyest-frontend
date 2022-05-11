@@ -1,0 +1,28 @@
+<section class="container mt-4">
+  <h2>SOLICITUDES PENDIENTES DE VALIDAR</h2>
+  <div class="columnas d-flex justify-content-between row ">
+    <p class="info col  referencia">REF.</p>
+    <p class="info col ">FECHA</p>
+    <p class="info col "> USUARIO</p>
+    <p class="info col "> DEPARTAMENTO</p>
+    <p class="info col  ">TIPO DE SOLICITUD</p>
+    <p class="info col  me-4">ESTADO</p>
+    <p class="comentario info col ">COMENTARIO</p>
+
+  </div>
+  <hr>
+  <div>
+    <article class="my-2" *ngFor="let solicitud of solicitudes.results">
+      <app-solicitudes-card [listaSolicitudes]="solicitud"></app-solicitudes-card>
+    </article>
+
+
+
+  </div>
+
+  <div class="volver text-center mt-5">
+    <button class="btn btn-secondary" (click)="volverInicio()" [routerLink]="['/login']">Logout
+    </button>
+
+  </div>
+</section>
